@@ -55,6 +55,7 @@ def MoveLeft():			#Move Left
 Initialization()
 
 print("""\
+
 |------------------|
 |    CONTROLS:     |
 |   __      __     |
@@ -70,6 +71,7 @@ print("""\
 | o --> stop ALL   |
 | q --> quit       |
 |------------------|
+
 """)
 
 
