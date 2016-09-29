@@ -36,7 +36,7 @@ def MoveFoward():		#Move Forward
   GPIO.output(13,GPIO.LOW)		
       
 
-def MoveReverse():			#Move Back
+def MoveReverse():		#Move Reverse
   GPIO.output(18,GPIO.HIGH)		
   GPIO.output(15,GPIO.HIGH)		
   time.sleep(0.4)
