@@ -7,13 +7,13 @@
 #  ECHO    --> Pin 29
 #
 
-import RPi.GPIO as GPIO		#import GPIO Library
-import time			#import time Library
+import RPi.GPIO as GPIO		
+import time			
 
-GPIO.setmode(GPIO.BOARD)	#GPIO -board number 
-GPIO.setwarnings(False)		#Disable messages
+GPIO.setmode(GPIO.BOARD)	
+GPIO.setwarnings(False)		
 
-def Initialization():		#set pins as output	
+def Initialization():	
     GPIO.setup(29,GPIO.OUT)
     GPIO.setup(31,GPIO.IN)		
 
