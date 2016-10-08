@@ -13,17 +13,20 @@ import time
 GPIO.setmode(GPIO.BOARD)	
 GPIO.setwarnings(False)		
 
+ECHO = 29
+TRIGGER = 31
+
 def Initialization():	
-    GPIO.setup(29,GPIO.OUT)
-    GPIO.setup(31,GPIO.IN)
+    GPIO.setup(ECHO,GPIO.OUT)
+    GPIO.setup(TRIGGER,GPIO.IN)
 
 def distance():
-    GPIO.output(29,GPIO.HIGH)
+    GPIO.output(ECHO,GPIO.HIGH)
     time.sleep (0.000010)
-    GPIO.output(29,GPIO.LOW)
-    while GPIO.input(31) == 0:
+    GPIO.output(ECHO,GPIO.LOW)
+    while GPIO.input(TRIGGER) == 0:
         TriggerStart = time.time()
-    while GPIO.input(31) == 1:
+    while GPIO.input(TRIGGER) == 1:
         TriggerEnd = time.time()
     Trigger = TriggerEnd - TriggerStart
     Distance = Trigger / 0.000058
