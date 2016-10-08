@@ -3,10 +3,10 @@
 #  Use BOARD NUMBER !
 #  ------------------
 #
-#  RIGHT MOTOR FORWARD--> Pin 16
-#  RIGHT MOTOR REVERSE--> Pin 18
-#  LEFT  MOTOR FORWARD--> Pin 13
-#  LEFT  MOTOR REVERSE--> Pin 15
+#  RIGHT FORWARD --> Pin 16
+#  RIGHT REVERSE --> Pin 18
+#  LEFT  FORWARD --> Pin 13
+#  LEFT  REVERSE --> Pin 15
 #
 
 import RPi.GPIO as GPIO		#import GPIO Library
@@ -16,41 +16,46 @@ import getch			#import single-char input Library
 GPIO.setmode(GPIO.BOARD)	#GPIO -board number 
 GPIO.setwarnings(False)		#Disable messages
 
+F_RIGHT = 16			#set GPIO pins of motor
+F_LEFT = 13
+R_RIGHT = 18
+R_LEFT = 15
+
 def Initialization():		#set pins as output	
-  GPIO.setup(13,GPIO.OUT)	
-  GPIO.setup(15,GPIO.OUT)		
-  GPIO.setup(16,GPIO.OUT)	
-  GPIO.setup(18,GPIO.OUT)
+  GPIO.setup(F_LEFT,GPIO.OUT)	
+  GPIO.setup(R_LEFT,GPIO.OUT)		
+  GPIO.setup(F_RIGHT,GPIO.OUT)	
+  GPIO.setup(R_RIGHT,GPIO.OUT)
 
 def MoveStop():			#stop ALL
-  GPIO.output(13,GPIO.LOW)	
-  GPIO.output(15,GPIO.LOW)	
-  GPIO.output(16,GPIO.LOW)
-  GPIO.output(18,GPIO.LOW)	
+  GPIO.output(F_LEFT,GPIO.LOW)	
+  GPIO.output(R_LEFT,GPIO.LOW)	
+  GPIO.output(F_RIGHT,GPIO.LOW)
+  GPIO.output(R_RIGHT,GPIO.LOW)	
 
 def MoveFoward():		#Move Forward
-  GPIO.output(16,GPIO.HIGH)		
-  GPIO.output(13,GPIO.HIGH)		
+  GPIO.output(F_RIGHT,GPIO.HIGH)		
+  GPIO.output(F_LEFT,GPIO.HIGH)		
   time.sleep(0.4)
-  GPIO.output(16,GPIO.LOW)		
-  GPIO.output(13,GPIO.LOW)		
+  GPIO.output(F_RIGHT,GPIO.LOW)		
+  GPIO.output(F_LEFT,GPIO.LOW)		
       
 def MoveReverse():		#Move Reverse
-  GPIO.output(18,GPIO.HIGH)		
-  GPIO.output(15,GPIO.HIGH)		
+  GPIO.output(R_RIGHT,GPIO.HIGH)		
+  GPIO.output(R_LEFT,GPIO.HIGH)		
   time.sleep(0.4)
-  GPIO.output(18,GPIO.LOW)	
-  GPIO.output(15,GPIO.LOW)
+  GPIO.output(R_RIGHT,GPIO.LOW)	
+  GPIO.output(R_LEFT,GPIO.LOW)
 
 def MoveRight():		#Move Right
-  GPIO.output(13,GPIO.HIGH)
+  GPIO.output(F_LEFT,GPIO.HIGH)
   time.sleep(0.2)
-  GPIO.output(13,GPIO.LOW)
+  GPIO.output(F_LEFT,GPIO.LOW)
 
 def MoveLeft():			#Move Left
-  GPIO.output(16,GPIO.HIGH)		
+  GPIO.output(F_RIGHT,GPIO.HIGH)		
   time.sleep(0.2)
-  GPIO.output(16,GPIO.LOW)	
+  GPIO.output(F_RIGHT,GPIO.LOW)	
 
 Initialization()
 
@@ -75,7 +80,7 @@ print("""\
 """)
 
 
-while True:
+while True:				# Control KEYS motor
   InputKEY= getch.getch()
   if InputKEY == 'w':
     MoveFoward()
