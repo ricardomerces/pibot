@@ -5,8 +5,8 @@
 #
 #  RIGHT FORWARD --> Pin 16
 #  RIGHT REVERSE --> Pin 18
-#  LEFT  FORWARD --> Pin 13
-#  LEFT  REVERSE --> Pin 15
+#  LEFT  FORWARD --> Pin 11
+#  LEFT  REVERSE --> Pin 13
 #
 
 import RPi.GPIO as GPIO		#import GPIO Library
