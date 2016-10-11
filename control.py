@@ -17,9 +17,9 @@ GPIO.setmode(GPIO.BOARD)	#GPIO -board number
 GPIO.setwarnings(False)		#Disable messages
 
 F_RIGHT = 16			#set GPIO pins of motor
-F_LEFT = 13
+F_LEFT = 11
 R_RIGHT = 18
-R_LEFT = 15
+R_LEFT = 13
 
 def Initialization():		#set pins as output	
   GPIO.setup(F_LEFT,GPIO.OUT)	
