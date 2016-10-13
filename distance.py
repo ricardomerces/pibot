@@ -17,7 +17,7 @@ GPIO.setwarnings(False)
 ECHO = 29
 TRIG = 31
 
-def Initialization():	
+def initialization():	
     GPIO.setup(ECHO,GPIO.IN)
     GPIO.setup(TRIG,GPIO.OUT)
 
@@ -26,15 +26,15 @@ def distance():
     time.sleep (0.000010)
     GPIO.output(TRIG,GPIO.LOW)
     while GPIO.input(ECHO) == 0:
-        TriggerStart = time.time()
+        pulse_start = time.time()
     while GPIO.input(ECHO) == 1:
-        TriggerEnd = time.time()
-    Trigger = TriggerEnd - TriggerStart
-    Distance = Trigger * 17150
-    Distance = round(Distance,0)
-    print (Distance, 'cm' , end="\r")
+        pulse_end = time.time()
+    trigger = pulse_end - pulse_start
+    distance = trigger * 17150
+    distance = round(distance,0)
+    print (distance, 'cm   ' , end="\r")
 
-Initialization()
+initialization()
 while True:
     time.sleep(2)
     distance()
