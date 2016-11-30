@@ -29,8 +29,8 @@ def distance():
         pulse_start = time.time()
     while GPIO.input(ECHO) == 1:
         pulse_end = time.time()
-    trigger = pulse_end - pulse_start
-    distance = trigger * 17150
+    pulse = pulse_end - pulse_start
+    distance = pulse/2 * 34300  # 343m/s Speed of Sound
     distance = round(distance,0)
     print (distance, 'cm   ' , end="\r")
 
